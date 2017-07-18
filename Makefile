@@ -13,8 +13,9 @@ MLX_MAC = minilibx_mac
 MLX_MAC_A = minilibx_mac/libmlx.a
 MLX_MAC_FLAG = -lmlx -framework OpenGL -framework AppKit
 
-SUPPORT = src/src.a
-SRC  = 	
+SUPPORT = src
+SRC  = src/line.c src/ft_change_point.c src/ft_pixel.c
+SRC_DIR = src
 
 OBJ = $(SRC:.c=.o) $(MAIN:.c=.o)
 
@@ -35,10 +36,11 @@ linux:
 	@echo "Done: $(NAME)"
 
 mac:
-	@gcc $(MAIN) $(MLX_MAC_FLAG) $(SRC)\
+	@gcc $(MAIN) $(MLX_MAC_FLAG) $(SRC) \
 	-I $(LIB)/$(MLX_MAC) $(LIB)/$(MLX_MAC_A) \
 	-I $(LIB)/$(LIBFT) $(LIB)/$(LIBFT_A) \
-	-lm $(SUPPORT)  -o $(NAME)
+	-I $(SRC_DIR) \
+	-lm -g -o $(NAME)
 	@echo "Done: $(NAME)"
 
 
