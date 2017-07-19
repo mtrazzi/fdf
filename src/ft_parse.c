@@ -6,7 +6,7 @@
 /*   By: mtrazzi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/19 14:52:17 by mtrazzi           #+#    #+#             */
-/*   Updated: 2017/07/19 16:40:42 by mtrazzi          ###   ########.fr       */
+/*   Updated: 2017/07/19 19:10:47 by mtrazzi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int		ft_tab_length(char **tab)
 	return (i);	
 }
 
-int		**ft_parse(char *file_name)
+void	ft_parse(char *file_name, t_env *e)
 {
 	int		fd;
 	char	*line;
@@ -59,11 +59,11 @@ int		**ft_parse(char *file_name)
 		ft_putstr("Error : cannot open file\n");
 		exit(EXIT_FAILURE);
 	}
-	while (get_next_line(fd, &line) > 0) {}
+	while (get_next_line(fd, &line) > 0)
 	{
 		j = -1;
 		tab = ft_strsplit(line, ' ');
-		tmp = (int *)malloc(sizeof(int *));
+		tmp = (int *)malloc(sizeof(int) * ft_tab_length(tab));
 		while (++j < ft_tab_length(tab))
 			tmp[j] = ft_atoi(tab[j]);
 		result[i] = tmp;
@@ -71,11 +71,7 @@ int		**ft_parse(char *file_name)
 	}
 	if (close(fd) == -1)
 		exit(EXIT_FAILURE);
-	return (result);
-}
-
-int main(int ac, char **av)
-{
-	ft_parse(av[1]);
-	return (0);
+	e->width = ft_tab_length(tab);
+	e->height = ft_number_of_lines(file_name);
+	e->tab = result;
 }

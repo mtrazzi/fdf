@@ -6,7 +6,7 @@
 /*   By: mtrazzi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/18 10:59:32 by mtrazzi           #+#    #+#             */
-/*   Updated: 2017/07/19 16:23:30 by mtrazzi          ###   ########.fr       */
+/*   Updated: 2017/07/19 17:47:21 by mtrazzi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,9 @@ typedef struct	s_env
 	void	*win;
 	t_img_d	d;
 	t_pix	pix;
+	int		width;
+	int		height;
+	int		**tab;
 }				t_env;
 
 typedef struct	s_tab
@@ -81,6 +84,6 @@ t_img_d	ft_get_img(void *mlx, int width, int height);
 t_img_d	ft_change_pix(t_pix pix, int x, int y, t_img_d d);
 void	ft_put_line(t_point p1, t_point p2, t_env *e);
 int		ft_number_of_lines(char *file_name);
-int		**ft_parse(char *file_name);
+void	ft_parse(char *file_name, t_env *e);
 
 #endif
