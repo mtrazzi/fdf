@@ -14,7 +14,7 @@ MLX_MAC_A = minilibx_mac/libmlx.a
 MLX_MAC_FLAG = -lmlx -framework OpenGL -framework AppKit
 
 SUPPORT = src
-SRC  = src/line.c src/ft_change_point.c src/ft_pixel.c
+SRC  = src/line.c src/ft_change_point.c src/ft_pixel.c src/ft_image.c src/ft_parse.c
 SRC_DIR = src
 
 OBJ = $(SRC:.c=.o) $(MAIN:.c=.o)

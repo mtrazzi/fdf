@@ -6,7 +6,7 @@
 /*   By: mtrazzi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/18 10:59:32 by mtrazzi           #+#    #+#             */
-/*   Updated: 2017/07/18 18:22:06 by mtrazzi          ###   ########.fr       */
+/*   Updated: 2017/07/19 16:23:30 by mtrazzi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@
 
 typedef struct	s_point
 {
-	void	*mlx;
-	void	*win;
 	int		x;
 	int		y;
 }				t_point;
@@ -51,10 +49,38 @@ typedef union			s_pix
 	};
 }						t_pix;
 
-void	line(int x0, int y0, int x1, int y1, void *mlx, void *win);
+typedef	struct	s_img_d
+{
+	char	*data;
+	void	*img_addr;
+	int		depth;
+	int		bpl;
+	int		end;
+}				t_img_d;
+
+typedef struct	s_env
+{
+	void	*mlx;
+	void	*win;
+	t_img_d	d;
+	t_pix	pix;
+}				t_env;
+
+typedef struct	s_tab
+{
+	int **tab;
+	int	nb_raw;
+	int	nb_col;
+}				t_tab;
+
 void	ft_put_pixel(t_point *p, int color);
 t_point	*ft_change_point(t_point *s, int x, int y);
-t_point	ft_point_init(void *mlx, void *win, int x, int y);
+t_point	ft_pt(int x, int y);
 t_pix	ft_pixel_init(unsigned char a, unsigned char r, unsigned char g, unsigned char b);
+t_img_d	ft_get_img(void *mlx, int width, int height);
+t_img_d	ft_change_pix(t_pix pix, int x, int y, t_img_d d);
+void	ft_put_line(t_point p1, t_point p2, t_env *e);
+int		ft_number_of_lines(char *file_name);
+int		**ft_parse(char *file_name);
 
 #endif
