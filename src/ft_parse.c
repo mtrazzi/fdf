@@ -6,11 +6,23 @@
 /*   By: mtrazzi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/19 14:52:17 by mtrazzi           #+#    #+#             */
-/*   Updated: 2017/07/19 19:10:47 by mtrazzi          ###   ########.fr       */
+/*   Updated: 2017/07/20 11:17:33 by mtrazzi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+int		ft_open(char *file_name)
+{
+	int fd;
+
+	if ((fd = open(file_name, O_RDONLY)) == -1)
+	{
+		ft_putstr("Error : cannot open file\n");
+		exit(EXIT_FAILURE);
+	}
+	return (fd);
+}
 
 int		ft_number_of_lines(char *file_name)
 {
@@ -19,11 +31,7 @@ int		ft_number_of_lines(char *file_name)
 	char	*line;
 
 	sum = 0;
-	if ((fd = open(file_name, O_RDONLY)) == -1)
-	{
-		ft_putstr("Error : cannot open file\n");
-		exit(EXIT_FAILURE);
-	}
+	fd = ft_open(file_name);
 	while (get_next_line(fd, &line) > 0)
 		sum++;
 	if (close(fd) == -1)
@@ -54,11 +62,7 @@ void	ft_parse(char *file_name, t_env *e)
 	if (!(result = (int **)malloc(sizeof(int *) * ft_number_of_lines(file_name))))
 		exit(EXIT_FAILURE);
 	i = 0;
-	if ((fd = open(file_name, O_RDONLY)) == -1)
-	{
-		ft_putstr("Error : cannot open file\n");
-		exit(EXIT_FAILURE);
-	}
+	fd = ft_open(file_name);
 	while (get_next_line(fd, &line) > 0)
 	{
 		j = -1;

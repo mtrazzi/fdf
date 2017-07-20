@@ -6,7 +6,7 @@
 /*   By: mtrazzi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/18 10:59:32 by mtrazzi           #+#    #+#             */
-/*   Updated: 2017/07/19 17:47:21 by mtrazzi          ###   ########.fr       */
+/*   Updated: 2017/07/20 14:29:17 by mtrazzi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,8 @@ typedef struct	s_env
 	int		width;
 	int		height;
 	int		**tab;
+	int		scale;
+	t_point	**coord;
 }				t_env;
 
 typedef struct	s_tab
@@ -81,9 +83,12 @@ t_point	*ft_change_point(t_point *s, int x, int y);
 t_point	ft_pt(int x, int y);
 t_pix	ft_pixel_init(unsigned char a, unsigned char r, unsigned char g, unsigned char b);
 t_img_d	ft_get_img(void *mlx, int width, int height);
-t_img_d	ft_change_pix(t_pix pix, int x, int y, t_img_d d);
+t_img_d	ft_change_pix(t_env e, t_pix pix, int x, int y);
 void	ft_put_line(t_point p1, t_point p2, t_env *e);
 int		ft_number_of_lines(char *file_name);
 void	ft_parse(char *file_name, t_env *e);
+t_point	**ft_init_tab(int n, int p);
+void	ft_iso(t_env *e);
+void	ft_process_pt(int x, int y, t_env *e);
 
 #endif
