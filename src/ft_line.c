@@ -6,7 +6,7 @@
 /*   By: mtrazzi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/20 19:57:38 by mtrazzi           #+#    #+#             */
-/*   Updated: 2017/07/20 19:58:08 by mtrazzi          ###   ########.fr       */
+/*   Updated: 2017/07/20 21:33:05 by mtrazzi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,21 +22,12 @@ t_line	ft_line_init(int dx, int dy, int err)
 	return (t);
 }
 
-void	ft_put_line(t_point p1, t_point p2, t_env *e)
+void	ft_put_line_aux(t_point p1, t_point p2, t_env *e, t_line t)
 {
 	int		e2;
-	t_line	t;
 	int		x;
 	int		y;
-	int sum = 0;
-	int scale;
 
-	p1.x *= e->scale;
-	p1.y *= e->scale;
-	p2.x *= e->scale;
-	p2.y *= e->scale;
-	scale = e->scale;
-	e->scale = 1;
 	t = ft_line_init(abs(p1.x - p2.x), abs(p1.y - p2.y), \
 abs(p1.x - p2.x) > abs(p1.y - p2.y) ? abs(p1.x - p2.x) : -abs(p1.y - p2.y));
 	while (!(p1.x == p2.x && p1.y == p2.y))
@@ -55,8 +46,23 @@ abs(p1.x - p2.x) > abs(p1.y - p2.y) ? abs(p1.x - p2.x) : -abs(p1.y - p2.y));
 			t.err += t.dx;
 			p1.y += (p1.y < p2.y ? 1 : -1);
 		}
-		sum++;
 	}
+}
+
+void	ft_put_line(t_point p1, t_point p2, t_env *e)
+{
+	int		scale;
+	t_line	t;
+
+	p1.x *= e->scale;
+	p1.y *= e->scale;
+	p2.x *= e->scale;
+	p2.y *= e->scale;
+	scale = e->scale;
+	e->scale = 1;
+	t = ft_line_init(abs(p1.x - p2.x), abs(p1.y - p2.y), \
+abs(p1.x - p2.x) > abs(p1.y - p2.y) ? abs(p1.x - p2.x) : -abs(p1.y - p2.y));
+	ft_put_line_aux(p1, p2, e, t);
 	e->scale = scale;
 }
 
