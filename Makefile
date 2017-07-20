@@ -20,7 +20,7 @@ SRC_DIR = src
 
 OBJ = $(SRC:.c=.o) $(MAIN:.c=.o)
 
-$(NAME):
+$(NAME): libft
 ifeq ($(shell uname -s),Linux)
 	@make linux --no-print-directory
 else ifeq ($(shell uname -s),Darwin)
@@ -47,7 +47,7 @@ mac:
 
 clean:
 	@/bin/rm -f $(OBJ)
-fclean:
+fclean: clean
 	@/bin/rm -f $(NAME)
 
 re: fclean all
@@ -56,8 +56,15 @@ src:
 	@make -C src/ re --no-print-directory
 	@make -C src/ clean --no-print-directory
 
-lib:
-	@make -C $(LIB)/$(LIBFT) re --no-print-directory
-	@echo "Lib: Remade"
-	@make -C $(LIB)/$(LIBFT) clean --no-print-directory
-	@echo "Lib: Cleaned"
+libft:
+	@(test -f $(LIB)/$(LIBFT_A)) || make -C $(LIB)/$(LIBFT) --no-print-directory
+
+libclean:
+	make -C $(LIB)/$(LIBFT) clean
+
+libfclean:
+	make -C $(LIB)/$(LIBFT) fclean
+
+fullclean: clean libclean
+
+fullfclean: fclean libfclean

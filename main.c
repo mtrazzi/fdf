@@ -6,7 +6,7 @@
 /*   By: mtrazzi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/18 14:46:11 by mtrazzi           #+#    #+#             */
-/*   Updated: 2017/07/20 18:45:31 by mtrazzi          ###   ########.fr       */
+/*   Updated: 2017/07/20 19:07:02 by mtrazzi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ int main(int ac, char **av)
 		exit(EXIT_FAILURE);
 	ft_parse(av[1], &e);
 	e.mlx = mlx_init();
-    e.win = mlx_new_window(e.mlx, 1000, 1000, "this is my window");
-	e.d = ft_get_img(e.mlx, 1000, 1000);
-	e.scale = 10;
+    e.win = mlx_new_window(e.mlx, 2560, 1440, "this is my window");
+	e.d = ft_get_img(e.mlx, 2560, 1440);
+	e.scale = 500 / e.width + 1;
 	e.coord = ft_init_tab(e.height, e.width);
 	ft_iso(&e);
 	for (int i = 0; i < e.height; i++)

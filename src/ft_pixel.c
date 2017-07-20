@@ -1,6 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_pixel.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mtrazzi <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/07/20 19:59:17 by mtrazzi           #+#    #+#             */
+/*   Updated: 2017/07/20 19:59:18 by mtrazzi          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fdf.h"
 
-t_pix	ft_pixel_init(unsigned char a, unsigned char r, unsigned char g, unsigned char b)
+t_pix	ft_pixel_init(unsigned char a, unsigned char r, \
+		unsigned char g, unsigned char b)
 {
 	t_pix	p;
 

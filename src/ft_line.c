@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_line.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mtrazzi <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/07/20 19:57:38 by mtrazzi           #+#    #+#             */
+/*   Updated: 2017/07/20 19:58:08 by mtrazzi          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fdf.h"
 
 t_line	ft_line_init(int dx, int dy, int err)
@@ -19,7 +31,6 @@ void	ft_put_line(t_point p1, t_point p2, t_env *e)
 	int sum = 0;
 	int scale;
 
-	printf("(%d, %d) -> (%d, %d)\n", p1.x, p1.y, p2.x, p2.y);
 	p1.x *= e->scale;
 	p1.y *= e->scale;
 	p2.x *= e->scale;
@@ -38,7 +49,7 @@ abs(p1.x - p2.x) > abs(p1.y - p2.y) ? abs(p1.x - p2.x) : -abs(p1.y - p2.y));
 			p1.x += (p1.x < p2.x ? 1 : -1);
 		}
 		if (p1.x == p2.x && p1.y == p2.y)
-			break;
+			break ;
 		if (e2 < t.dy)
 		{
 			t.err += t.dx;

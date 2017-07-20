@@ -6,7 +6,7 @@
 /*   By: mtrazzi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/18 10:59:32 by mtrazzi           #+#    #+#             */
-/*   Updated: 2017/07/20 18:18:35 by mtrazzi          ###   ########.fr       */
+/*   Updated: 2017/07/20 19:55:16 by mtrazzi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@
 #include <math.h>
 #include "mlx.h"
 #include "libft.h"
-
 
 typedef struct	s_line
 {
