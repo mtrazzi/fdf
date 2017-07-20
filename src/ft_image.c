@@ -16,9 +16,7 @@ t_img_d	ft_change_pix(t_env e, t_pix pix, int x, int y)
 {
 	int		index;
 
-	//printf("(%d, %d)\n", x, y);
-	index = y * e.d.bpl * e.scale + x * (e.d.depth / 8) * e.scale;
-
+	index = (y + 500) * e.d.bpl * e.scale + x * (e.d.depth / 8) * e.scale + e.width * e.scale;
 	e.d.data[index] = pix.b;
 	e.d.data[index + 1] = pix.g;
 	e.d.data[index + 2] = pix.r;

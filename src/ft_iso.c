@@ -6,7 +6,7 @@
 /*   By: mtrazzi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/20 12:24:34 by mtrazzi           #+#    #+#             */
-/*   Updated: 2017/07/20 15:23:03 by mtrazzi          ###   ########.fr       */
+/*   Updated: 2017/07/20 18:39:48 by mtrazzi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,15 +31,19 @@ void	ft_iso(t_env *e)
 {
 	int		x;
 	int		y;
+	t_pix	pix;
 
 	x = 0;
-	while (x < e->width)
+	while (x < e->height)
 	{
 		y = 0;
-		while (y < e->height)
+		while (y < e->width)
 		{
-			(e->coord)[x][y] = ft_pt(x - y + e->height, ((x + y) * (e->tab[x][y]) / 2));
-			printf("e->coord[%d][%d] : (%d, %d)\n", x, y, ((e->coord)[x][y]).x, ((e->coord)[x][y]).y);
+			if (e->tab[x][y] > 8)
+				pix = ft_pixel_init(0, 0xff, 0, 0);
+			else
+				pix = ft_pixel_init(0, 0xff, 0xff, 0xff);
+			(e->coord)[x][y] = ft_pt(y - x + e->height, ((x + y) - e->tab[x][y] / (e->height / 1000 + 1)), pix);
 			y++;
 		}
 		x++;

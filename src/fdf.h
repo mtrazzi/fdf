@@ -6,7 +6,7 @@
 /*   By: mtrazzi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/18 10:59:32 by mtrazzi           #+#    #+#             */
-/*   Updated: 2017/07/20 14:29:17 by mtrazzi          ###   ########.fr       */
+/*   Updated: 2017/07/20 18:18:35 by mtrazzi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,6 @@
 #include "mlx.h"
 #include "libft.h"
 
-typedef struct	s_point
-{
-	int		x;
-	int		y;
-}				t_point;
 
 typedef struct	s_line
 {
@@ -48,6 +43,13 @@ typedef union			s_pix
 		unsigned char	a;
 	};
 }						t_pix;
+
+typedef struct	s_point
+{
+	int		x;
+	int		y;
+	t_pix	pix;
+}				t_point;
 
 typedef	struct	s_img_d
 {
@@ -80,7 +82,7 @@ typedef struct	s_tab
 
 void	ft_put_pixel(t_point *p, int color);
 t_point	*ft_change_point(t_point *s, int x, int y);
-t_point	ft_pt(int x, int y);
+t_point	ft_pt(int x, int y, t_pix pix);
 t_pix	ft_pixel_init(unsigned char a, unsigned char r, unsigned char g, unsigned char b);
 t_img_d	ft_get_img(void *mlx, int width, int height);
 t_img_d	ft_change_pix(t_env e, t_pix pix, int x, int y);
@@ -90,5 +92,8 @@ void	ft_parse(char *file_name, t_env *e);
 t_point	**ft_init_tab(int n, int p);
 void	ft_iso(t_env *e);
 void	ft_process_pt(int x, int y, t_env *e);
+void	ft_free_tab(int **tab, int size);
+void	ft_free_coord(t_point **tab, int size);
+t_pix	ft_mix(t_pix p1, t_pix p2);
 
 #endif
