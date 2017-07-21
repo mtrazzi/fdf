@@ -6,7 +6,7 @@
 /*   By: mtrazzi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/18 10:59:32 by mtrazzi           #+#    #+#             */
-/*   Updated: 2017/07/20 22:42:26 by mtrazzi          ###   ########.fr       */
+/*   Updated: 2017/07/21 12:29:35 by mtrazzi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ typedef struct	s_opt
 	char	**av;
 	int		ac;
 	int		cursor;
+	int		clean;
 }				t_opt;
 typedef struct	s_env
 {
@@ -82,5 +83,12 @@ void			ft_free_tab(int **tab, int size);
 void			ft_free_coord(t_point **tab, int size);
 t_pix			ft_mix(t_pix p1, t_pix p2);
 void			ft_free_char_tab(char **tab, int size);
+void			ft_clean(t_env *e);
+void			ft_update(t_env *e);
+int				key_hook(int keycode, t_env *e);
+void			draw(t_env *e);
+int				expose_hook(t_env *e);
+void			ft_move(t_env *e, int move);
+void			ft_straight_line(t_point p1, t_point p2, int color, t_env *e);
 
 #endif

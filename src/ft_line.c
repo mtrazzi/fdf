@@ -6,7 +6,7 @@
 /*   By: mtrazzi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/20 19:57:38 by mtrazzi           #+#    #+#             */
-/*   Updated: 2017/07/20 21:33:05 by mtrazzi          ###   ########.fr       */
+/*   Updated: 2017/07/21 12:24:35 by mtrazzi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,4 +75,23 @@ void	ft_process_pt(int x, int y, t_env *e)
 		ft_put_line(coord[x][y], coord[x + 1][y], e);
 	if (y < e->width - 1)
 		ft_put_line(coord[x][y], coord[x][y + 1], e);
+}
+
+void	ft_straight_line(t_point p1, t_point p2, int color, t_env *e)
+{
+	int sx;
+	int sy;
+
+	sx = (p1.x < p2.x ? 1 : -1);
+	sy = (p1.y < p2.y ? 1 : -1);
+	while (p1.x != p2.x || p1.y != p2.y)
+	{
+		ft_putstr("coucou");
+		mlx_pixel_put(e->mlx, e->win, p1.x, p1.y, color);
+		if (p1.x != p2.x)
+			p1.x += sx;
+		if (p1.y != p2.y)
+			p1.y += sy;
+	}
+	mlx_pixel_put(e->mlx, e->win, p2.x, p2.y, color);
 }
