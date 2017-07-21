@@ -6,7 +6,7 @@
 /*   By: mtrazzi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/20 19:57:38 by mtrazzi           #+#    #+#             */
-/*   Updated: 2017/07/21 12:24:35 by mtrazzi          ###   ########.fr       */
+/*   Updated: 2017/07/21 14:02:35 by mtrazzi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,6 @@ void	ft_straight_line(t_point p1, t_point p2, int color, t_env *e)
 	sy = (p1.y < p2.y ? 1 : -1);
 	while (p1.x != p2.x || p1.y != p2.y)
 	{
-		ft_putstr("coucou");
 		mlx_pixel_put(e->mlx, e->win, p1.x, p1.y, color);
 		if (p1.x != p2.x)
 			p1.x += sx;

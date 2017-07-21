@@ -6,7 +6,7 @@
 /*   By: mtrazzi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/18 10:59:32 by mtrazzi           #+#    #+#             */
-/*   Updated: 2017/07/21 12:29:35 by mtrazzi          ###   ########.fr       */
+/*   Updated: 2017/07/21 16:18:54 by mtrazzi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ typedef struct	s_opt
 	int		ac;
 	int		cursor;
 	int		clean;
+	int		color;
 }				t_opt;
 typedef struct	s_env
 {
@@ -65,6 +66,8 @@ typedef struct	s_env
 	int		scale;
 	t_point	**coord;
 	t_opt	o;
+	int		pad;
+	int		h;
 }				t_env;
 void			ft_put_pixel(t_point *p, int color);
 t_point			*ft_change_point(t_point *s, int x, int y);
@@ -90,5 +93,7 @@ void			draw(t_env *e);
 int				expose_hook(t_env *e);
 void			ft_move(t_env *e, int move);
 void			ft_straight_line(t_point p1, t_point p2, int color, t_env *e);
+void			ft_loading(t_env *e, int n);
+void			ft_scale(t_env *e, int keycode);
 
 #endif

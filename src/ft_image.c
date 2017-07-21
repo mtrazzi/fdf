@@ -6,7 +6,7 @@
 /*   By: mtrazzi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/20 19:55:29 by mtrazzi           #+#    #+#             */
-/*   Updated: 2017/07/20 19:56:54 by mtrazzi          ###   ########.fr       */
+/*   Updated: 2017/07/21 16:12:15 by mtrazzi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ t_img_d	ft_change_pix(t_env e, t_pix pix, int x, int y)
 {
 	int		index;
 
-	index = (y + ft_max(1440 - e.height - e.width, 0) / 2) * e.d.bpl * \
-			e.scale + x * (e.d.depth / 8) * e.scale + e.width * e.scale;
+	index = (y + e.h + ft_max(1440 - e.height - e.width, 0) / 2) * e.d.bpl * \
+	e.scale + (x + 800 / e.scale + 100 * e.pad) * (e.d.depth / 8) * e.scale;
 	if (index >= 1440 * (e.d.bpl) || index <= 0)
 		return (e.d);
 	e.d.data[index] = pix.b;

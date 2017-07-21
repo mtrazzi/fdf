@@ -6,7 +6,7 @@
 /*   By: mtrazzi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/19 14:52:17 by mtrazzi           #+#    #+#             */
-/*   Updated: 2017/07/20 22:00:32 by mtrazzi          ###   ########.fr       */
+/*   Updated: 2017/07/21 16:18:52 by mtrazzi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ int		*ft_parse_aux(int fd, char **tab, t_env *e)
 		exit(EXIT_FAILURE);
 	while (++j < ft_tab_length(tab))
 		tmp[j] = ft_atoi(tab[j]);
+	e->width = j;
 	ft_free_char_tab(tab, e->width);
 	return (tmp);
 }
@@ -80,6 +81,7 @@ void	ft_parse(char *file_name, t_env *e)
 		result[++i] = ft_parse_aux(fd, ft_strsplit(line, ' '), e);
 	if (close(fd) == -1)
 		exit(EXIT_FAILURE);
+
 	e->height = ft_nb_lines(file_name);
 	e->tab = result;
 }
